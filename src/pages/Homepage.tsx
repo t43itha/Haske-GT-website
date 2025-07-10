@@ -51,15 +51,19 @@ const Homepage = () => {
           className="absolute inset-0"
           style={{ y, opacity }}
         >
-          {/* Lighter overlay for better visual appeal */}
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-70"
+          >
+            <source src="/haske-hero.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay gradients for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-navy/70 via-navy/60 to-black/70" />
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-            style={{
-              backgroundImage: `url('https://images.pexels.com/photos/2026324/pexels-photo-2026324.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')`
-            }}
-          />
-          {/* Subtle gradient overlay instead of heavy black */}
           <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-navy/20" />
         </motion.div>
         

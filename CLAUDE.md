@@ -73,3 +73,12 @@ The project uses a luxury travel theme with these brand colors:
 - ESLint is configured for code quality
 - No testing framework is currently set up
 - PostCSS and Autoprefixer are configured for CSS processing
+
+# Additional Docs & Screenshots
+
+- Screenshots for bug reports and UI issues are saved in:  
+  `/mnt/c/Users/tabit/Downloads`
+- To reference a screenshot, use the full path. Example:  
+  `/mnt/c/Users/tabit/Downloads/error_2025-07-09.png`
+- You can ask:  
+  "Analyze this screenshot: /mnt/c/Users/tabit/Downloads/error_2025-07-09.png"
