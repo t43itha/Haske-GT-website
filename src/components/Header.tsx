@@ -47,49 +47,38 @@ const Header = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
-          {/* Logo */}
-          <Link to="/" onClick={handleNavClick} className="flex items-center flex-shrink-0">
-            <motion.div
-              className="flex items-center"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <img 
-                src="/HaskeHorizontalgold.png" 
-                alt="Haske Global Travel" 
-                className={`w-auto object-contain transition-all duration-500 ${
-                  shouldUseDarkHeader ? 'h-20' : 'h-24'
-                }`}
-              />
-            </motion.div>
-          </Link>
+        <div className="flex items-center justify-between py-3">
+          {/* Hamburger Menu - Left */}
+          <button
+            className="flex items-center space-x-2 text-white hover:text-gold transition-colors duration-300"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X size={24} />
+            ) : (
+              <Menu size={24} />
+            )}
+            <span className="text-sm font-medium">Menu</span>
+          </button>
 
-          {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center space-x-8 flex-1 justify-center">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                onClick={handleNavClick}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === item.path
-                    ? 'text-gold'
-                    : shouldUseDarkHeader
-                    ? 'text-white hover:text-gold'
-                    : 'text-white hover:text-gold'
-                }`}
+          {/* Logo - Centered */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link to="/" onClick={handleNavClick} className="flex items-center">
+              <motion.div
+                className="flex items-center"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                {item.name}
-                {location.pathname === item.path && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-gold"
-                    layoutId="underline"
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
+                <img 
+                  src="/HaskeHorizontalgold.png" 
+                  alt="Haske Global Travel" 
+                  className={`w-auto object-contain transition-all duration-500 ${
+                    shouldUseDarkHeader ? 'h-20' : 'h-24'
+                  }`}
+                />
+              </motion.div>
+            </Link>
+          </div>
 
           {/* Desktop Support Button - Right Aligned */}
           <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
@@ -137,18 +126,6 @@ const Header = () => {
               <Phone size={16} />
               <span className="text-sm font-medium">Talk To Us</span>
             </motion.a>
-            
-            {/* Menu Button */}
-            <button
-              className="p-2 flex items-center justify-center"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X size={24} className="text-white" />
-              ) : (
-                <Menu size={24} className="text-white" />
-              )}
-            </button>
           </div>
         </div>
       </div>
@@ -157,22 +134,13 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-navy/98 backdrop-blur-md"
+            className="bg-navy/98 backdrop-blur-md"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
             <div className="px-4 py-6 space-y-4">
-              {/* Mobile Logo - Centered */}
-              <div className="flex justify-center mb-6">
-                <img 
-                  src="/HaskeHorizontalgold.png" 
-                  alt="Haske Global Travel" 
-                  className="h-20 w-auto object-contain opacity-90"
-                />
-              </div>
-              
               {/* Navigation Links */}
               <div className="space-y-2">
                 {navItems.map((item) => (
@@ -201,7 +169,7 @@ const Header = () => {
                 {/* Mobile Contact Options */}
                 <div className="space-y-3">
                   <a
-                    href="https://wa.me/+233535703324"
+                    href="https://wa.me/+447340801274"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center space-x-2 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-lg"
