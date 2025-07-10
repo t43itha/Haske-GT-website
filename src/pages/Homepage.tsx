@@ -57,14 +57,14 @@ const Homepage = () => {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-70"
+            className="absolute inset-0 w-full h-full object-cover opacity-90 brightness-110 contrast-110 saturate-110"
           >
             <source src="/haske-hero.mp4" type="video/mp4" />
           </video>
           
-          {/* Overlay gradients for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-navy/70 via-navy/60 to-black/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-navy/20" />
+          {/* Lighter overlay gradients for better text readability while preserving video vibrancy */}
+          <div className="absolute inset-0 bg-gradient-to-br from-navy/40 via-navy/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-navy/10" />
         </motion.div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
