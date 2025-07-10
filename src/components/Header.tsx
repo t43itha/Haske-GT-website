@@ -130,24 +130,24 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menu Dropdown */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="bg-navy/98 backdrop-blur-md"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full md:w-80 bg-navy/98 backdrop-blur-md shadow-xl border-t border-gold/20"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-4 py-6 space-y-4">
+            <div className="px-6 py-4 space-y-3">
               {/* Navigation Links */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`block px-4 py-3 text-lg font-medium rounded-lg transition-colors duration-300 text-center ${
+                    className={`block px-4 py-2 text-base font-medium rounded-md transition-colors duration-300 ${
                       location.pathname === item.path
                         ? 'text-gold bg-gold/10'
                         : 'text-cream hover:text-gold hover:bg-gold/5'
@@ -159,31 +159,31 @@ const Header = () => {
                 ))}
               </div>
               
-              {/* Contact Section */}
-              <div className="pt-6 border-t border-gold/20">
-                <div className="text-center text-cream mb-4">
-                  <div className="font-medium">24/7 Support</div>
-                  <div className="text-sm text-gold">Always Available</div>
+              {/* Contact Section - Compact */}
+              <div className="pt-3 border-t border-gold/20">
+                <div className="text-center text-cream mb-3">
+                  <div className="text-sm font-medium">24/7 Support</div>
+                  <div className="text-xs text-gold">Always Available</div>
                 </div>
                 
-                {/* Mobile Contact Options */}
-                <div className="space-y-3">
+                {/* Contact Options - Horizontal on Desktop */}
+                <div className="flex flex-col md:flex-row gap-2 md:gap-3">
                   <a
                     href="https://wa.me/+447340801274"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-lg"
+                    className="flex items-center justify-center space-x-2 bg-green-600 text-white py-2 px-3 rounded-md hover:bg-green-700 transition-colors duration-300 shadow-md text-sm"
                   >
-                    <MessageCircle size={20} />
-                    <span>WhatsApp Us</span>
+                    <MessageCircle size={16} />
+                    <span>WhatsApp</span>
                   </a>
                   
                   <a
                     href="tel:+442081911882"
-                    className="flex items-center justify-center space-x-2 bg-gold text-navy py-3 rounded-lg hover:bg-gold/90 transition-colors duration-300 shadow-lg"
+                    className="flex items-center justify-center space-x-2 bg-gold text-navy py-2 px-3 rounded-md hover:bg-gold/90 transition-colors duration-300 shadow-md text-sm"
                   >
-                    <Phone size={20} />
-                    <span>Call Direct</span>
+                    <Phone size={16} />
+                    <span>Call Now</span>
                   </a>
                 </div>
               </div>
