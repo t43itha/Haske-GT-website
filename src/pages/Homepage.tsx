@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowRight, Phone, Crown, Gem, Award, Star, Shield, Clock, CheckCircle, Users, Zap, Globe, ChevronDown } from 'lucide-react';
+import { ArrowRight, Phone, Crown, Gem, Award, Star, Zap, Globe, ChevronDown } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 
 const Homepage = () => {

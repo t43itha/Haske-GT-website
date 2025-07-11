@@ -6,11 +6,6 @@ const IATACredentials = () => {
   const location = useLocation();
   const [isInHeroSection, setIsInHeroSection] = useState(true);
   
-  // Only render on homepage - strict check
-  if (location.pathname !== '/') {
-    return null;
-  }
-
   useEffect(() => {
     const handleScroll = () => {
       // Consider hero section as roughly the first viewport height
@@ -26,6 +21,11 @@ const IATACredentials = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Only render on homepage - strict check
+  if (location.pathname !== '/') {
+    return null;
+  }
 
   return (
     <AnimatePresence>

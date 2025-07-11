@@ -5,7 +5,6 @@ import {
   Users, 
   Palmtree, 
   Heart, 
-  CheckCircle, 
   ArrowRight,
   Crown,
   Gem,
