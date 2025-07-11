@@ -50,7 +50,7 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-24">
+    <div className="pt-28">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-navy via-navy/95 to-navy/90">
         <div 

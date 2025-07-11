@@ -33,7 +33,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-24">
+    <div className="pt-28">
       {/* Hero Section - Standardized with About page image */}
       <section className="relative py-24 bg-gradient-to-br from-navy via-navy/95 to-navy/90">
         <div 

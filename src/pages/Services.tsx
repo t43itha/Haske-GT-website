@@ -78,7 +78,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-24">
+    <div className="pt-28">
       {/* Hero Section - Standardized */}
       <section className="relative py-24 bg-gradient-to-br from-black via-navy to-black">
         <div 

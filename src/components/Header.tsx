@@ -42,12 +42,13 @@ const Header = () => {
           ? 'bg-navy/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
+      style={{ minHeight: '7rem' }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="flex items-center justify-between py-4 w-full">
           {/* Hamburger Menu - Left */}
           <button
             className="flex items-center space-x-2 text-white hover:text-gold transition-colors duration-300"
