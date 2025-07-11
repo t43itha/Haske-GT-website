@@ -47,7 +47,7 @@ const Header = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between py-4">
           {/* Hamburger Menu - Left */}
           <button
             className="flex items-center space-x-2 text-white hover:text-gold transition-colors duration-300"
@@ -72,9 +72,7 @@ const Header = () => {
                 <img 
                   src="/HaskeHorizontalgold.png" 
                   alt="Haske Global Travel" 
-                  className={`w-auto object-contain transition-all duration-500 ${
-                    shouldUseDarkHeader ? 'h-20' : 'h-24'
-                  }`}
+                  className="w-auto h-20 object-contain transition-all duration-500"
                 />
               </motion.div>
             </Link>
