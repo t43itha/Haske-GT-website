@@ -71,7 +71,7 @@ const Header = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img 
-                  src="/HaskeHorizontalgold.png" 
+                  src="/HaskeHorizontalGold_New.png" 
                   alt="Haske Global Travel" 
                   className="w-auto h-20 object-contain transition-all duration-500"
                 />
