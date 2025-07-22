@@ -42,7 +42,7 @@ const Header = () => {
           ? 'bg-navy/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
-      style={{ minHeight: '8rem' }}
+      style={{ minHeight: '10rem' }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -73,7 +73,7 @@ const Header = () => {
                 <img 
                   src="/HaskeHorizontalGold_New.png" 
                   alt="Haske Global Travel" 
-                  className="w-auto h-24 md:h-28 lg:h-32 object-contain transition-all duration-500"
+                  className="w-auto h-32 md:h-36 lg:h-40 object-contain transition-all duration-500"
                 />
               </motion.div>
             </Link>
@@ -113,17 +113,18 @@ const Header = () => {
             </motion.a>
           </div>
 
-          {/* Mobile - Call CTA + Menu Button */}
+          {/* Mobile - WhatsApp CTA */}
           <div className="md:hidden flex items-center space-x-3 flex-shrink-0">
-            {/* Call Us CTA - Mobile Only */}
+            {/* WhatsApp CTA - Mobile Only */}
             <motion.a
-              href="tel:+442081911882"
-              className="flex items-center space-x-2 bg-gold text-navy px-3 py-2 rounded-full hover:bg-gold/90 transition-colors duration-300 shadow-lg"
-              whileHover={{ scale: 1.05 }}
+              href="https://wa.me/+447340801274"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 text-white p-2.5 rounded-full hover:bg-green-700 transition-colors duration-300 shadow-lg"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Phone size={16} />
-              <span className="text-sm font-medium">Talk To Us</span>
+              <MessageCircle size={18} />
             </motion.a>
           </div>
         </div>
