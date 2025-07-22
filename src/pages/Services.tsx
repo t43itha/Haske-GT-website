@@ -256,7 +256,7 @@ const Services = () => {
             <div className="text-center mb-8">
               <Star size={32} className="text-gold mx-auto mb-4" />
               <h3 className="text-3xl font-light text-navy mb-4">
-                Why Leaders Choose <span className="text-gold italic font-extralight">Haske Global</span>
+                Why Leaders Choose <span className="text-gold italic font-extralight">Haske Global Travel</span>
               </h3>
             </div>
             
