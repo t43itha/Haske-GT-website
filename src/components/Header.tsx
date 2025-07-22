@@ -42,7 +42,7 @@ const Header = () => {
           ? 'bg-navy/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
-      style={{ minHeight: '7rem' }}
+      style={{ minHeight: '8rem' }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -73,7 +73,7 @@ const Header = () => {
                 <img 
                   src="/HaskeHorizontalGold_New.png" 
                   alt="Haske Global Travel" 
-                  className="w-auto h-20 object-contain transition-all duration-500"
+                  className="w-auto h-24 md:h-28 lg:h-32 object-contain transition-all duration-500"
                 />
               </motion.div>
             </Link>
