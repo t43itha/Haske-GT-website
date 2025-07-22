@@ -63,7 +63,7 @@ const Header = () => {
           </button>
 
           {/* Logo - Centered */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="absolute left-1/2 transform -translate-x-1/2 mt-6">
             <Link to="/" onClick={handleNavClick} className="flex items-center">
               <motion.div
                 className="flex items-center"
