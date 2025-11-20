@@ -4,14 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        'navy': '#0A1628',
-        'gold': '#D4A574',
-        'cream': '#FAFAF8',
-        'charcoal': '#2C3E50',
+        'navy': '#050B14', // Deeper, richer navy
+        'gold': '#C5A059', // More metallic gold
+        'cream': '#F5F5F0', // Slightly warmer cream
+        'charcoal': '#1A202C',
+        'platinum': '#E5E4E2',
       },
       fontFamily: {
-        'serif': ['Georgia', 'Times New Roman', 'serif'],
-        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'serif': ['"Playfair Display"', 'serif'],
+        'sans': ['"Montserrat"', 'sans-serif'],
       },
       fontWeight: {
         'extralight': '200',
@@ -50,8 +51,9 @@ export default {
         },
       },
       backgroundImage: {
-        'luxury-gradient': 'linear-gradient(135deg, #0A1628 0%, #000000 50%, #0A1628 100%)',
-        'gold-gradient': 'linear-gradient(135deg, #D4A574 0%, #B8956A 50%, #D4A574 100%)',
+        'luxury-gradient': 'linear-gradient(135deg, #050B14 0%, #000000 50%, #050B14 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #C5A059 0%, #9F7D38 50%, #C5A059 100%)',
+        'pearl-gradient': 'linear-gradient(135deg, #F5F5F0 0%, #E5E4E2 100%)',
       },
     },
   },

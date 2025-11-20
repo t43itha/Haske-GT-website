@@ -4,98 +4,88 @@ import { Mail, Phone, Shield, Award, Globe } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-navy text-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="mb-6">
-              <img 
-                src="/HaskeHorizontalgold.png" 
-                alt="Haske Global Travel" 
-                className="h-36 w-auto object-contain opacity-90"
-              />
-            </div>
-            <p className="text-cream/70 text-sm leading-relaxed mb-6 max-w-md font-light">
-              Luxury corporate travel management for executives who demand excellence.
+    <footer className="bg-navy text-cream border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
+          {/* Logo & Tagline */}
+          <div className="flex items-center gap-6">
+            <img
+              src="/HaskeHorizontalgold.png"
+              alt="Haske Global Travel"
+              className="h-12 w-auto object-contain opacity-90"
+            />
+            <div className="hidden md:block w-px h-8 bg-white/10" />
+            <p className="hidden md:block text-cream/40 text-xs font-sans tracking-wide uppercase max-w-xs">
+              Luxury corporate travel management
             </p>
-            
-            {/* Contact Info - Separate Lines */}
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-gold flex-shrink-0" />
-                <span className="font-light">UK: +44 208 191 1882</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-gold flex-shrink-0" />
-                <span className="font-light">Ghana: +233 535703324</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-gold flex-shrink-0" />
-                <span className="font-light">info@haskeglobaltravel.com</span>
-              </div>
+          </div>
+
+          {/* Quick Links - Horizontal */}
+          <div className="flex gap-6 md:gap-8">
+            {[
+              { name: 'Services', path: '/services' },
+              { name: 'About', path: '/about' },
+              { name: 'Contact', path: '/contact' }
+            ].map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-cream/60 hover:text-gold transition-colors duration-300 text-xs font-sans tracking-widest uppercase"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-6 border-t border-white/5">
+          {/* Contact - Compact */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3 text-xs text-cream/60 font-sans">
+              <Phone size={14} className="text-gold" />
+              <span>UK: +44 208 191 1882</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-cream/60 font-sans">
+              <Mail size={14} className="text-gold" />
+              <span>info@haskeglobaltravel.com</span>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-gold font-medium mb-4 text-sm">Quick Links</h3>
-            <div className="space-y-3">
-              {[
-                { name: 'Services', path: '/services' },
-                { name: 'About', path: '/about' },
-                { name: 'Contact', path: '/contact' }
-              ].map((link) => (
-                <Link 
-                  key={link.name}
-                  to={link.path} 
-                  className="block text-cream/70 hover:text-gold transition-colors duration-300 text-sm font-light"
-                >
-                  {link.name}
-                </Link>
-              ))}
+          {/* Trust - Compact */}
+          <div className="flex items-center gap-6 md:justify-center">
+            <div className="flex items-center gap-2 text-xs text-cream/60 font-sans">
+              <Shield size={14} className="text-gold" />
+              <span>IATA Certified</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-cream/60 font-sans">
+              <Globe size={14} className="text-gold" />
+              <span>Global Reach</span>
             </div>
           </div>
 
-          {/* Trust & Credentials */}
-          <div>
-            <h3 className="text-gold font-medium mb-4 text-sm">Trust & Credentials</h3>
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center space-x-3">
-                <Shield size={16} className="text-gold flex-shrink-0" />
-                <span className="text-xs font-light">IATA Certified</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Award size={16} className="text-gold flex-shrink-0" />
-                <span className="text-xs font-light">ISO 27001 Security</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Globe size={16} className="text-gold flex-shrink-0" />
-                <span className="text-xs font-light">London • Dubai • Accra</span>
-              </div>
-            </div>
-            
-            {/* IATA Logo */}
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/iata-seeklogo-transparent.PNG" 
-                alt="IATA Certified Agency" 
-                className="w-16 h-16 object-contain opacity-90"
-              />
-              <div>
-                <div className="text-xs font-medium text-gold">IATA Certified</div>
-                <div className="text-xs text-cream/60 font-light">Travel Agency</div>
-              </div>
+          {/* IATA Logo - Small */}
+          <div className="flex items-center gap-3 md:justify-end">
+            <img
+              src="/iata-seeklogo-transparent.PNG"
+              alt="IATA"
+              className="w-8 h-8 object-contain opacity-80"
+            />
+            <div className="text-[10px] text-cream/40 font-sans uppercase tracking-wider leading-tight">
+              <div>IATA Certified</div>
+              <div>Travel Agency</div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gold/20 pt-6">
-          <div className="text-center">
-            <div className="text-xs text-cream/50 font-light">
-              © 2025 Eugene Chauffeurs Ltd T/A Haske Global Travel. All rights reserved.
+        <div className="border-t border-white/5 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-xs text-cream/40 font-sans">
+              © 2025 Eugene Chauffeurs Ltd T/A Haske Global Travel.
+            </div>
+            <div className="flex gap-6 text-xs text-cream/40 font-sans uppercase tracking-wider">
+              <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
