@@ -53,15 +53,21 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo - Left */}
             <Link to="/" onClick={handleNavClick} className="flex items-center z-50">
-              <motion.img
-                src="/HaskeHorizontalGold_New.png"
-                alt="Haske Global Travel"
-                className={`w-auto object-contain transition-all duration-500 ${
-                  isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24 lg:h-28'
+              <motion.div
+                className={`overflow-hidden transition-all duration-500 ${
+                  isScrolled ? 'h-8 md:h-10' : 'h-10 md:h-12 lg:h-14'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
-              />
+              >
+                <img
+                  src="/HaskeHorizontalGold_New.png"
+                  alt="Haske Global Travel"
+                  className={`w-auto object-cover object-center transition-all duration-500 ${
+                    isScrolled ? 'h-16 md:h-20 -mt-4 md:-mt-5' : 'h-20 md:h-24 lg:h-28 -mt-5 md:-mt-6 lg:-mt-7'
+                  }`}
+                />
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation - Center */}
