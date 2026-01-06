@@ -87,7 +87,7 @@ const Homepage = () => {
   return (
     <div className="overflow-x-hidden bg-navy">
       {/* Hero Section - Split Layout */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100svh] flex items-center overflow-hidden pb-20 lg:pb-0">
         <motion.div
           className="absolute inset-0 z-0"
           style={{ y, opacity }}
@@ -105,7 +105,7 @@ const Homepage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/50 to-navy/30" />
         </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32 w-full">
           <div className="max-w-3xl">
             {/* Tagline with horizontal line */}
             <motion.div
@@ -163,12 +163,12 @@ const Homepage = () => {
                 <span>Plan Your Journey</span>
               </motion.button>
 
-              {/* Secondary CTA - Bordered button */}
+              {/* Secondary CTA - Hidden on mobile to reduce CTA clutter */}
               <a
                 href="https://wa.me/+447340801274"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-3 px-8 py-4 border border-cream/30 text-cream font-sans text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
+                className="hidden sm:flex group items-center justify-center gap-3 px-8 py-4 border border-cream/30 text-cream font-sans text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
               >
                 <Phone className="w-5 h-5" />
                 <span>Contact Concierge</span>

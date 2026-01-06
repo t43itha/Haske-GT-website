@@ -1,4 +1,4 @@
-import { Phone, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const MobileCTA = () => {
@@ -9,25 +9,16 @@ const MobileCTA = () => {
       animate={{ y: 0 }}
       transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
     >
-      <div className="flex items-center justify-center gap-3 max-w-lg mx-auto">
-        {/* WhatsApp Button */}
+      <div className="max-w-lg mx-auto">
+        {/* Single, clear CTA - WhatsApp for instant contact */}
         <a
           href="https://wa.me/+447340801274"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 bg-gold text-navy py-3 px-4 font-sans font-semibold text-sm tracking-wide hover:bg-gold-dark transition-colors duration-300"
+          className="flex items-center justify-center gap-2 bg-gold text-navy py-3.5 px-6 font-sans font-semibold text-sm tracking-wide hover:bg-gold-dark transition-colors duration-300 w-full"
         >
           <MessageCircle className="w-5 h-5" />
-          <span>WhatsApp</span>
-        </a>
-
-        {/* Call Button */}
-        <a
-          href="tel:+442081911882"
-          className="flex-1 flex items-center justify-center gap-2 border border-white/20 text-cream py-3 px-4 font-sans font-semibold text-sm tracking-wide hover:border-gold hover:text-gold transition-all duration-300"
-        >
-          <Phone className="w-5 h-5" />
-          <span>Call Now</span>
+          <span>Chat with Concierge</span>
         </a>
       </div>
     </motion.div>
