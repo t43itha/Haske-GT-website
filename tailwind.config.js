@@ -4,9 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'navy': '#050B14', // Deeper, richer navy
-        'gold': '#C5A059', // More metallic gold
-        'cream': '#F5F5F0', // Slightly warmer cream
+        'navy': '#050B14',
+        'navy-light': '#0F1A2B',
+        'gold': '#C5A059',
+        'gold-light': '#D4B675',
+        'gold-dark': '#9F7D38',
+        'cream': '#F5F5F0',
         'charcoal': '#1A202C',
         'platinum': '#E5E4E2',
       },

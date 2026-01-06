@@ -1,259 +1,327 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, 
-  Award, 
-  Clock, 
-  Shield, 
-  Zap, 
+import {
   Globe,
-  Crown,
-  Gem
+  Clock,
+  Key,
+  Plane,
+  ArrowRight
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import SectionBadge from '../components/SectionBadge';
 
 const About = () => {
   const stats = [
-    { number: '500+', label: 'Executives Served', icon: <Users size={20} /> },
-    { number: '15k+', label: 'Hours Saved', icon: <Clock size={20} /> },
-    { number: '03', label: 'Global Offices', icon: <Globe size={20} /> },
-    { number: '99%', label: 'Success Rate', icon: <Shield size={20} /> }
+    { value: '50+', label: 'Global Destinations' },
+    { value: '500+', label: 'Corporate Clients' },
+    { value: '15+', label: 'Years of Excellence' }
   ];
 
-  const pillars = [
+  const coreValues = [
     {
-      title: 'Proactive Intelligence',
-      description: 'We solve problems before you know they exist',
-      details: 'Our monitoring systems track weather patterns, airline schedules, and global events to anticipate disruptions. When your flight gets cancelled, we\'ve already secured your alternative.',
-      icon: <Zap size={32} />
+      icon: Key,
+      title: 'Premium Access',
+      description: 'Unlocking exclusive entry to the world\'s most elite lounges, private terminals, and services that are simply inaccessible to the public.'
     },
     {
-      title: 'Global Mastery',
-      description: 'Local expertise in 50+ cities, one dedicated contact',
-      details: 'Whether you\'re landing in Lagos or lunching in London, our local teams know the shortcuts, the best restaurants, and the right people to call.',
-      icon: <Globe size={32} />
+      icon: Clock,
+      title: '24/7 Concierge',
+      description: 'Round-the-clock dedicated support. Whether it\'s a last-minute flight change or a dinner reservation in Tokyo, we are always on standby.'
     },
     {
-      title: 'Exclusive Access',
-      description: 'VIP treatment and upgrades unavailable to the public',
-      details: 'Direct airline partnerships, luxury hotel relationships, and diplomatic protocols give you access to experiences money alone can\'t buy.',
-      icon: <Crown size={32} />
+      icon: Globe,
+      title: 'Global Network',
+      description: 'A far-reaching web of partners ensuring luxury standards are met worldwide. No matter where you land, you are in Haske territory.'
     }
+  ];
+
+  const offices = [
+    { city: 'London', region: 'Europe & UK', description: 'Headquarters', flag: '🇬🇧' },
+    { city: 'Dubai', region: 'Middle East & Asia', description: 'Regional Hub', flag: '🇦🇪' },
+    { city: 'Accra', region: 'West Africa', description: 'Local Expertise', flag: '🇬🇭' }
   ];
 
   return (
     <div className="bg-navy min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-navy/80 z-10" />
-          <img 
-            src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop" 
-            alt="About Haske" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-block mb-6"
-          >
-            <span className="py-1 px-3 border border-gold/30 rounded-full bg-black/20 backdrop-blur-sm text-gold text-xs tracking-[0.3em] uppercase font-sans">
-              Our Story
-            </span>
-          </motion.div>
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
 
-          <motion.h1
-            className="text-5xl md:text-7xl font-serif text-cream mb-8 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Built by Travelers, <br />
-            <span className="text-gold italic">For Leaders</span>
-          </motion.h1>
-          
-          <motion.p
-            className="text-lg md:text-xl text-cream/70 mb-12 max-w-2xl mx-auto font-light font-sans leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Because scrambling with travel logistics wastes your valuable time.
-          </motion.p>
-
-          {/* Trust Badges */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-8 mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {stats.map((stat, index) => (
-              <div key={index} className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-6 py-3 border border-white/10">
-                <div className="text-gold">{stat.icon}</div>
-                <div className="text-left">
-                  <div className="text-gold font-serif text-lg leading-none mb-1">{stat.number}</div>
-                  <div className="text-cream/60 text-xs font-sans uppercase tracking-wider">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Story Section */}
-      <section className="py-24 bg-cream">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              className="flex flex-col gap-8"
             >
-              <h2 className="text-4xl md:text-5xl font-serif text-navy mb-8 leading-tight">
-                Born from Frustration, <br />
-                <span className="text-gold italic">Perfected Through Experience</span>
-              </h2>
-              <div className="space-y-6 text-lg text-charcoal/70 font-sans font-light leading-relaxed">
-                <p>
-                  In 2018, our founder missed a critical $2M merger meeting due to a 'luxury' travel agency's incompetence. That disaster sparked Haske Global Travel.
-                </p>
-                <p>
-                  Today, we prevent those disasters for 500+ executives worldwide. Not through promises, but through obsessive preparation and genuine global presence.
-                </p>
-                <p className="font-medium text-navy border-l-2 border-gold pl-6">
-                  We maintain offices in London, Dubai, and Accra—not call centers, but local experts who know every concierge, every shortcut, every solution.
+              <div className="flex flex-col gap-4">
+                <span className="text-gold text-sm font-sans font-semibold tracking-[0.2em] uppercase">
+                  The Pinnacle of Travel
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-cream leading-tight">
+                  Excellence <br />
+                  <span className="text-gold italic">in Motion</span>
+                </h1>
+                <p className="text-cream/70 text-lg font-sans font-light leading-relaxed max-w-xl">
+                  Haske Global Travel is dedicated to curating seamless, luxury journeys for the world's most discerning executives. Experience corporate mobility reimagined.
                 </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/services"
+                  className="flex items-center justify-center h-12 px-8 bg-gold text-navy font-sans font-semibold tracking-wider uppercase hover:bg-cream transition-colors duration-300"
+                >
+                  Discover Our Mission
+                </Link>
+                <Link
+                  to="/destinations"
+                  className="flex items-center justify-center h-12 px-8 border border-white/20 text-cream font-sans tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
+                >
+                  View Destinations
+                </Link>
+              </div>
             </motion.div>
-            
+
+            {/* Right Image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-gold/20 blur-3xl rounded-full opacity-20" />
-              <img 
-                src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Executive Travel" 
-                className="relative z-10 w-full h-auto shadow-2xl shadow-navy/20 grayscale hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute -bottom-8 -left-8 bg-navy p-8 z-20 max-w-xs">
-                <Award size={32} className="text-gold mb-4" />
-                <p className="text-cream/80 font-serif italic text-lg">
-                  "Redefining what it means to travel for business."
-                </p>
+              <div className="relative w-full h-[400px] lg:h-[500px] overflow-hidden border border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent z-10" />
+                <img
+                  src="https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Luxury airplane wing at sunset"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+
+              {/* Floating Stat Card */}
+              <div className="absolute -bottom-6 -left-6 lg:bottom-10 lg:-left-12 bg-navy/80 backdrop-blur-md border border-white/10 p-6 z-20 max-w-[200px] hidden md:flex flex-col gap-2">
+                <Plane className="w-8 h-8 text-gold" strokeWidth={1.5} />
+                <p className="text-cream font-serif text-2xl font-bold">5,000+</p>
+                <p className="text-cream/60 text-sm font-sans">Successful flights coordinated globally</p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Why We're Different */}
-      <section className="py-32 bg-navy relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Crown size={40} className="text-gold mx-auto mb-6" strokeWidth={1} />
-            <h2 className="text-4xl md:text-5xl font-serif text-cream mb-6">
-              Why We're <span className="text-gold italic">Different</span>
-            </h2>
-            <p className="text-lg text-cream/60 max-w-2xl mx-auto font-sans font-light">
-              Three fundamental principles that separate us from traditional travel agencies.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pillars.map((pillar, index) => (
+      {/* Stats Bar */}
+      <section className="border-y border-white/5 bg-white/[0.02] backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="group bg-white/5 backdrop-blur-sm p-10 border border-white/10 hover:border-gold/30 transition-all duration-500"
-                initial={{ opacity: 0, y: 30 }}
+                className="flex flex-col gap-2 px-4 pt-8 md:pt-0 first:pt-0"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-gold mb-8 group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
-                <h3 className="text-2xl font-serif text-cream mb-4">{pillar.title}</h3>
-                <p className="text-cream/80 mb-6 font-sans font-light">{pillar.description}</p>
-                <p className="text-cream/50 text-sm leading-relaxed font-sans font-light border-t border-white/10 pt-6">
-                  {pillar.details}
-                </p>
+                <p className="text-gold text-4xl font-serif font-bold tracking-tight">{stat.value}</p>
+                <p className="text-cream/70 text-sm font-sans font-medium uppercase tracking-[0.15em]">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Global Presence */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      {/* Story Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Background Accent */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Image Group */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="relative order-2 lg:order-1"
             >
-              <h2 className="text-4xl font-serif text-navy mb-8">
-                Global Presence, <br />
-                <span className="text-gold italic">Local Expertise</span>
-              </h2>
-              <div className="space-y-8">
-                {[
-                  { city: 'London', region: 'Europe & UK', description: 'Headquarters', flag: '🇬🇧' },
-                  { city: 'Dubai', region: 'Middle East & Asia', description: 'Regional Hub', flag: '🇦🇪' },
-                  { city: 'Accra', region: 'West Africa', description: 'Local Expertise', flag: '🇬🇭' }
-                ].map((office, index) => (
-                  <div key={index} className="flex items-start gap-6 p-6 border-b border-gray-100 last:border-0">
-                    <div className="text-4xl grayscale opacity-80">{office.flag}</div>
-                    <div>
-                      <h3 className="text-xl font-serif text-navy mb-1">{office.city}</h3>
-                      <div className="text-gold text-xs font-sans uppercase tracking-wider mb-2">{office.region}</div>
-                      <p className="text-charcoal/60 text-sm font-sans font-light">{office.description}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="aspect-[4/3] overflow-hidden border border-white/10">
+                <img
+                  src="https://images.pexels.com/photos/2026324/pexels-photo-2026324.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Luxury private jet interior"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Overlapping Image */}
+              <div className="absolute -bottom-8 -right-8 w-2/3 aspect-video overflow-hidden border border-white/10 shadow-2xl hidden lg:block">
+                <img
+                  src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Executive chauffeur service"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
 
+            {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-navy p-10 text-cream"
+              className="flex flex-col gap-8 order-1 lg:order-2"
             >
-              <Shield size={40} className="text-gold mb-8" strokeWidth={1} />
-              <h3 className="text-2xl font-serif mb-8">Certifications & Standards</h3>
-              <div className="space-y-4">
-                {[
-                  'IATA Certified Agency',
-                  'ISO 27001 Security Standard',
-                  'Virtuoso Luxury Network',
-                  'PCI DSS Compliant',
-                  '256-bit Data Encryption'
-                ].map((credential, index) => (
-                  <div key={index} className="flex items-center gap-4 py-3 border-b border-white/10 last:border-0">
-                    <div className="w-1.5 h-1.5 bg-gold rounded-full" />
-                    <span className="font-sans font-light text-cream/80">{credential}</span>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-serif text-cream leading-tight mb-4">
+                  Refining the Art of <br />
+                  <span className="text-gold italic">Corporate Travel</span>
+                </h2>
+                <div className="h-1 w-20 bg-gold mb-6" />
+                <p className="text-cream/80 text-lg font-sans font-light leading-relaxed mb-6">
+                  At Haske, we believe that the journey is as significant as the destination. Founded on the principles of trust, exclusivity, and impeccable service, we have established ourselves as the silent architects behind the world's most important business movements.
+                </p>
+                <p className="text-cream/60 text-base font-sans font-light leading-relaxed">
+                  Our team of dedicated specialists works tirelessly to ensure that every mile traveled is a testament to comfort and efficiency. From private aviation charter to secured ground transport, we handle the logistics so you can focus on the business at hand.
+                </p>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-gold/20 border-2 border-navy flex items-center justify-center">
+                    <span className="text-gold text-xs font-bold">CEO</span>
                   </div>
-                ))}
+                  <div className="w-10 h-10 rounded-full bg-gold/20 border-2 border-navy flex items-center justify-center">
+                    <span className="text-gold text-xs font-bold">VP</span>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gold/20 border-2 border-navy flex items-center justify-center">
+                    <span className="text-gold text-xs font-bold">DIR</span>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-cream font-sans font-semibold text-sm">Trusted by Industry Leaders</span>
+                  <Link to="/contact" className="text-gold text-xs hover:underline">Join our network</Link>
+                </div>
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Core Values & Global Presence - Combined Section */}
+      <section className="py-20 md:py-32 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-16 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <SectionBadge variant="light">Why Haske</SectionBadge>
+            <h2 className="text-3xl md:text-5xl font-serif text-navy mt-6 mb-4">
+              Global Presence, <span className="text-gold italic">Local Expertise</span>
+            </h2>
+            <p className="text-charcoal/60 text-lg font-sans font-light">
+              Built on a foundation of trust, exclusivity, and impeccable service. We don't just book travel; we engineer experiences.
+            </p>
+          </motion.div>
+
+          {/* Core Values Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {coreValues.map((value, index) => (
+              <motion.div
+                key={index}
+                className="group bg-navy p-8 hover:bg-navy/90 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-navy transition-colors duration-300">
+                  <value.icon className="w-7 h-7" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-serif text-cream mb-3">{value.title}</h3>
+                <p className="text-cream/70 text-sm font-sans font-light leading-relaxed">
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center gap-4 mb-16">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent to-gold/30" />
+            <span className="text-gold text-xs font-sans font-semibold tracking-[0.2em] uppercase">Our Offices</span>
+            <div className="h-px w-24 bg-gradient-to-l from-transparent to-gold/30" />
+          </div>
+
+          {/* Office Locations */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {offices.map((office, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-8 bg-white border border-gray-100 hover:border-gold/30 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center mb-4">
+                  <span className="text-3xl">{office.flag}</span>
+                </div>
+                <h3 className="text-xl font-serif text-navy mb-1">{office.city}</h3>
+                <div className="text-gold text-xs font-sans uppercase tracking-wider mb-2">{office.region}</div>
+                <p className="text-charcoal/60 text-sm font-sans">{office.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
+          style={{ backgroundImage: "url('https://images.pexels.com/photos/1181393/pexels-photo-1181393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-transparent" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex flex-col gap-8"
+          >
+            <h2 className="text-3xl md:text-5xl font-serif text-cream leading-tight">
+              Ready to elevate your <br />
+              <span className="text-gold italic">corporate travel?</span>
+            </h2>
+            <p className="text-cream/70 text-lg font-sans font-light max-w-2xl mx-auto">
+              Join the exclusive network of Haske travelers today. Experience the difference that true dedication makes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Link
+                to="/contact"
+                className="flex items-center justify-center min-w-[160px] h-14 px-8 bg-gold hover:bg-cream text-navy font-sans font-semibold tracking-wider uppercase transition-colors duration-300 shadow-[0_0_20px_rgba(197,160,89,0.3)]"
+              >
+                Inquire Now
+              </Link>
+              <Link
+                to="/contact"
+                className="flex items-center justify-center gap-2 min-w-[160px] h-14 px-8 border border-white/20 text-cream font-sans tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
+              >
+                Contact Support
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

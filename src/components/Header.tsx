@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MessageCircle, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Menu, X, MessageCircle, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -17,22 +17,23 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   // Scroll to top when navigating to a new page
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Determine if we're on homepage (which has dark hero) or other pages (which have light backgrounds)
-  const isHomepage = location.pathname === '/';
-  
-  // Header should be dark on non-homepage or when scrolled
-  const shouldUseDarkHeader = !isHomepage || isScrolled;
+  const shouldUseDarkHeader = isScrolled;
 
   const navItems = [
-    { name: 'Home', path: '/' },
+    { name: 'Destinations', path: '/destinations' },
     { name: 'Services', path: '/services' },
-    { name: 'About', path: '/about' },
+    { name: 'About Us', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -40,23 +41,70 @@ const Header = () => {
     <>
       <motion.header
         className={`fixed w-full top-0 z-50 transition-all duration-500 ${
-          shouldUseDarkHeader 
-            ? 'bg-navy/80 backdrop-blur-lg border-b border-white/5' 
-            : 'bg-transparent'
+          shouldUseDarkHeader
+            ? 'bg-navy/95 backdrop-blur-lg border-b border-white/5 py-3'
+            : 'bg-transparent py-5'
         }`}
-        style={{ minHeight: '8rem' }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="flex items-center justify-between py-4 w-full">
-            {/* Hamburger Menu - Left */}
-            <button
-              className="group flex items-center gap-3 text-white hover:text-gold transition-colors duration-300 z-50 relative"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <div className="relative w-8 h-8 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo - Left */}
+            <Link to="/" onClick={handleNavClick} className="flex items-center z-50">
+              <motion.img
+                src="/HaskeHorizontalGold_New.png"
+                alt="Haske Global Travel"
+                className={`w-auto object-contain transition-all duration-500 ${
+                  isScrolled ? 'h-16 md:h-20' : 'h-20 md:h-24 lg:h-28'
+                }`}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+            </Link>
+
+            {/* Desktop Navigation - Center */}
+            <nav className="hidden lg:flex items-center gap-10">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  onClick={handleNavClick}
+                  className={`relative font-sans text-xs tracking-[0.2em] uppercase transition-colors duration-300 ${
+                    location.pathname === item.path
+                      ? 'text-gold'
+                      : 'text-cream/60 hover:text-cream'
+                  }`}
+                >
+                  {item.name}
+                  {location.pathname === item.path && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-gold/50"
+                      layoutId="activeNav"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Right Side - CTA + Mobile Menu */}
+            <div className="flex items-center gap-4">
+              {/* Desktop CTA */}
+              <Link
+                to="/contact"
+                className="hidden lg:flex items-center gap-2 px-4 py-2 border border-cream/20 text-cream/80 text-xs font-sans tracking-[0.15em] uppercase hover:border-gold/50 hover:text-gold transition-all duration-300"
+              >
+                Inquire Now
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="lg:hidden flex items-center justify-center w-10 h-10 text-cream hover:text-gold transition-colors duration-300 z-50"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              >
                 <AnimatePresence mode="wait">
                   {isMobileMenuOpen ? (
                     <motion.div
@@ -80,162 +128,87 @@ const Header = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
-              <span className="text-xs font-sans tracking-[0.2em] uppercase hidden sm:block group-hover:tracking-[0.3em] transition-all duration-300">
-                {isMobileMenuOpen ? 'Close' : 'Menu'}
-              </span>
-            </button>
-
-            {/* Logo - Centered */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 mt-6 z-40">
-              <Link to="/" onClick={handleNavClick} className="flex items-center">
-                <motion.div
-                  className="flex items-center"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img 
-                    src="/HaskeHorizontalGold_New.png" 
-                    alt="Haske Global Travel" 
-                    className="w-auto h-32 md:h-36 lg:h-40 object-contain transition-all duration-500"
-                  />
-                </motion.div>
-              </Link>
-            </div>
-
-            {/* Desktop Support Button - Right Aligned */}
-            <div className="hidden lg:flex items-center space-x-4 flex-shrink-0 z-40">
-              <div className="text-right hidden xl:block">
-                <div className="font-serif text-white leading-tight text-lg">
-                  24/7 Support
-                </div>
-                <div className="text-[10px] text-gold uppercase tracking-widest leading-tight">Always Available</div>
-              </div>
-              <motion.a
-                href="https://wa.me/+447340801274"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gold text-navy p-3 rounded-full hover:bg-white transition-colors duration-300 shadow-lg shadow-gold/20"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MessageCircle size={20} />
-              </motion.a>
-            </div>
-
-            {/* Mobile Support Button */}
-            <div className="lg:hidden flex items-center z-40">
-              <motion.a
-                href="https://wa.me/+447340801274"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gold text-navy p-2.5 rounded-full hover:bg-white transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MessageCircle size={20} />
-              </motion.a>
+              </button>
             </div>
           </div>
         </div>
       </motion.header>
 
-      {/* Full Screen Menu Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-navy/95 backdrop-blur-xl"
+            className="fixed inset-0 z-40 bg-navy"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
             <div className="h-full w-full flex flex-col lg:flex-row">
-              {/* Left Side - Navigation */}
-              <div className="flex-1 flex items-center justify-center lg:justify-end lg:pr-20 pt-20 lg:pt-0">
-                <nav className="space-y-6 lg:space-y-8 text-center lg:text-right">
-                  {navItems.map((item, index) => (
+              {/* Navigation */}
+              <div className="flex-1 flex items-center justify-center pt-24">
+                <nav className="space-y-6 text-center">
+                  {[{ name: 'Home', path: '/' }, ...navItems].map((item, index) => (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -30 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
                       <Link
                         to={item.path}
-                        className={`group relative inline-block text-4xl md:text-6xl font-serif transition-colors duration-300 ${
+                        className={`group relative inline-block text-4xl md:text-5xl font-serif transition-colors duration-300 ${
                           location.pathname === item.path
                             ? 'text-gold italic'
                             : 'text-cream hover:text-gold'
                         }`}
                         onClick={handleNavClick}
                       >
-                        <span className="relative z-10">{item.name}</span>
-                        <span className={`absolute -bottom-2 left-0 w-full h-0.5 bg-gold transform origin-right transition-transform duration-500 ${
-                          location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                        }`} />
+                        {item.name}
                       </Link>
                     </motion.div>
                   ))}
                 </nav>
               </div>
 
-              {/* Divider */}
-              <div className="hidden lg:block w-px h-1/2 bg-white/10 self-center mx-10" />
-
-              {/* Right Side - Contact Info */}
-              <div className="flex-1 flex items-center justify-center lg:justify-start lg:pl-10 pb-20 lg:pb-0">
-                <div className="space-y-8 lg:space-y-12 text-center lg:text-left">
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 30 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                  >
-                    <h3 className="text-gold text-sm font-sans tracking-[0.2em] uppercase mb-4">Contact Us</h3>
-                    <div className="space-y-4">
-                      <a href="tel:+442081911882" className="block text-cream hover:text-gold transition-colors text-lg font-light">
-                        +44 208 191 1882
-                      </a>
-                      <a href="mailto:info@haskeglobaltravel.com" className="block text-cream hover:text-gold transition-colors text-lg font-light">
-                        info@haskeglobaltravel.com
-                      </a>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 30 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
-                  >
-                    <h3 className="text-gold text-sm font-sans tracking-[0.2em] uppercase mb-4">Visit Us</h3>
-                    <p className="text-cream/60 font-light leading-relaxed">
-                      Suite 130, Lewisham Tower House<br />
-                      67-71 Lewisham High Street<br />
-                      London, SE13 5JX
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 30 }}
-                    transition={{ duration: 0.4, delay: 0.5 }}
-                    className="flex justify-center lg:justify-start gap-4"
-                  >
-                    <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300">
-                      <MessageCircle size={18} />
+              {/* Contact Info */}
+              <div className="pb-16 px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                  className="flex flex-col items-center gap-6"
+                >
+                  <div className="flex gap-4">
+                    <a
+                      href="https://wa.me/+447340801274"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center border border-white/20 text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300"
+                      aria-label="WhatsApp"
+                    >
+                      <MessageCircle size={20} />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300">
-                      <Phone size={18} />
+                    <a
+                      href="tel:+442081911882"
+                      className="w-12 h-12 flex items-center justify-center border border-white/20 text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300"
+                      aria-label="Phone"
+                    >
+                      <Phone size={20} />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300">
-                      <Mail size={18} />
+                    <a
+                      href="mailto:info@haskeglobaltravel.com"
+                      className="w-12 h-12 flex items-center justify-center border border-white/20 text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300"
+                      aria-label="Email"
+                    >
+                      <Mail size={20} />
                     </a>
-                  </motion.div>
-                </div>
+                  </div>
+                  <p className="text-cream/40 text-xs font-sans tracking-wider uppercase">
+                    24/7 Concierge Available
+                  </p>
+                </motion.div>
               </div>
             </div>
           </motion.div>
