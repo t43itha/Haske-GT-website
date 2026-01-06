@@ -5,11 +5,12 @@ interface StatCardProps {
   value: string;
   label: string;
   suffix?: string;
+  subtitle?: string;
   delay?: number;
   variant?: 'dark' | 'light';
 }
 
-export default function StatCard({ value, label, suffix = '', delay = 0, variant = 'light' }: StatCardProps) {
+export default function StatCard({ value, label, suffix = '', subtitle, delay = 0, variant = 'light' }: StatCardProps) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -82,6 +83,11 @@ export default function StatCard({ value, label, suffix = '', delay = 0, variant
       <span className={`font-sans text-sm tracking-widest uppercase ${labelStyles[variant]}`}>
         {label}
       </span>
+      {subtitle && (
+        <span className={`font-sans text-xs mt-2 ${variant === 'dark' ? 'text-cream/50' : 'text-charcoal/50'}`}>
+          {subtitle}
+        </span>
+      )}
     </motion.div>
   );
 }

@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import IATACredentials from './components/IATACredentials';
 import ScrollToTop from './components/ScrollToTop';
+import MobileCTA from './components/MobileCTA';
 import Homepage from './pages/Homepage';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -27,6 +28,7 @@ function App() {
         <Footer />
         <IATACredentials />
         <ScrollToTop />
+        <MobileCTA />
       </div>
     </Router>
   );

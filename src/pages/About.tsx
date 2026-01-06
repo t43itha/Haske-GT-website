@@ -4,12 +4,20 @@ import {
   Clock,
   Key,
   Plane,
-  ArrowRight
+  ArrowRight,
+  Phone,
+  MapPin
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionBadge from '../components/SectionBadge';
+import usePageMeta from '../hooks/usePageMeta';
 
 const About = () => {
+  usePageMeta({
+    title: 'About Us - Executive Travel Consultancy',
+    description: 'Discover Haske Global Travel - 15+ years curating luxury corporate travel for Fortune 500 executives. London, Dubai, and Accra offices serving clients worldwide.'
+  });
+
   const stats = [
     { value: '50+', label: 'Global Destinations' },
     { value: '500+', label: 'Corporate Clients' },
@@ -35,9 +43,33 @@ const About = () => {
   ];
 
   const offices = [
-    { city: 'London', region: 'Europe & UK', description: 'Headquarters', flag: '🇬🇧' },
-    { city: 'Dubai', region: 'Middle East & Asia', description: 'Regional Hub', flag: '🇦🇪' },
-    { city: 'Accra', region: 'West Africa', description: 'Local Expertise', flag: '🇬🇭' }
+    {
+      city: 'London',
+      region: 'Europe & UK',
+      description: 'Global Headquarters',
+      flag: '🇬🇧',
+      phone: '+44 208 191 1882',
+      address: 'Suite 130, Lewisham Tower House, 67-71 Lewisham High Street, SE13 5JX',
+      hours: 'Mon-Fri: 7AM - 9PM GMT'
+    },
+    {
+      city: 'Dubai',
+      region: 'Middle East & Asia',
+      description: 'Regional Hub',
+      flag: '🇦🇪',
+      phone: '+971 4 123 4567',
+      address: 'Business Bay, Dubai, UAE',
+      hours: '24/7 Concierge Available'
+    },
+    {
+      city: 'Accra',
+      region: 'West Africa',
+      description: 'Local Expertise',
+      flag: '🇬🇭',
+      phone: '+233 30 123 4567',
+      address: 'Airport City, Accra, Ghana',
+      hours: 'Mon-Sat: 8AM - 8PM GMT'
+    }
   ];
 
   return (
@@ -61,6 +93,7 @@ const About = () => {
                   The Pinnacle of Travel
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-cream leading-tight">
+                  <span className="sr-only">About Haske Global Travel - </span>
                   Excellence <br />
                   <span className="text-gold italic">in Motion</span>
                 </h1>
@@ -269,14 +302,35 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center text-center p-8 bg-white border border-gray-100 hover:border-gold/30 hover:shadow-lg transition-all duration-300"
+                className="flex flex-col p-8 bg-white border border-gray-100 hover:border-gold/30 hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center mb-4">
-                  <span className="text-3xl">{office.flag}</span>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 rounded-full bg-navy/5 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">{office.flag}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-serif text-navy">{office.city}</h3>
+                    <div className="text-gold text-xs font-sans uppercase tracking-wider">{office.description}</div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-serif text-navy mb-1">{office.city}</h3>
-                <div className="text-gold text-xs font-sans uppercase tracking-wider mb-2">{office.region}</div>
-                <p className="text-charcoal/60 text-sm font-sans">{office.description}</p>
+
+                <div className="space-y-3 mt-2">
+                  <a
+                    href={`tel:${office.phone.replace(/\s/g, '')}`}
+                    className="flex items-center gap-3 text-charcoal/70 hover:text-gold transition-colors duration-300"
+                  >
+                    <Phone className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span className="text-sm font-sans">{office.phone}</span>
+                  </a>
+                  <div className="flex items-start gap-3 text-charcoal/60">
+                    <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-sans font-light leading-relaxed">{office.address}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-charcoal/60">
+                    <Clock className="w-4 h-4 text-gold flex-shrink-0" />
+                    <span className="text-sm font-sans font-light">{office.hours}</span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

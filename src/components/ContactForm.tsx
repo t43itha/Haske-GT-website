@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react';
+import { Send, Phone, Mail, Clock, CheckCircle, MessageCircle } from 'lucide-react';
 
 interface FormData {
   name: string;
-  contactMethod: string;
-  contactDetails: string;
+  email: string;
+  phone: string;
   travelType: string;
   urgent: boolean;
   message: string;
@@ -14,8 +14,8 @@ interface FormData {
 const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    contactMethod: 'email',
-    contactDetails: '',
+    email: '',
+    phone: '',
     travelType: '',
     urgent: false,
     message: '',
@@ -26,11 +26,11 @@ const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
 
   const validateForm = () => {
     const newErrors: Partial<FormData> = {};
-    
+
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.contactDetails.trim()) newErrors.contactDetails = 'Contact details are required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
     if (!formData.travelType) newErrors.travelType = 'Please select a travel type';
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -47,22 +47,6 @@ const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
     
     setIsSubmitting(false);
     setIsSubmitted(true);
-  };
-
-  const getContactIcon = () => {
-    switch (formData.contactMethod) {
-      case 'whatsapp': return <MessageCircle size={20} />;
-      case 'phone': return <Phone size={20} />;
-      default: return <Mail size={20} />;
-    }
-  };
-
-  const getContactPlaceholder = () => {
-    switch (formData.contactMethod) {
-      case 'whatsapp': return '+233 535703324';
-      case 'phone': return '+233 535703324';
-      default: return 'your.email@company.com';
-    }
   };
 
   if (isSubmitted) {
@@ -85,7 +69,7 @@ const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
         </p>
         <div className="space-y-3">
           <a
-            href="https://wa.me/+233535703324"
+            href="https://wa.me/+447340801274"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-gold text-navy px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors duration-300 shadow-lg"
@@ -127,54 +111,45 @@ const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
-        {/* Contact Method */}
+        {/* Email */}
         <div>
           <label className="block text-sm font-medium text-charcoal mb-2">
-            Preferred Contact Method
-          </label>
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { value: 'email', label: 'Email', icon: <Mail size={20} /> },
-              { value: 'phone', label: 'Phone', icon: <Phone size={20} /> },
-              { value: 'whatsapp', label: 'WhatsApp', icon: <MessageCircle size={20} /> },
-            ].map((method) => (
-              <button
-                key={method.value}
-                type="button"
-                onClick={() => setFormData({ ...formData, contactMethod: method.value })}
-                className={`flex flex-col items-center p-3 rounded-lg border-2 transition-all duration-300 ${
-                  formData.contactMethod === method.value
-                    ? 'border-gold bg-gold/10 text-gold'
-                    : 'border-gray-200 hover:border-gold/50'
-                }`}
-              >
-                {method.icon}
-                <span className="text-sm mt-1">{method.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Contact Details */}
-        <div>
-          <label className="block text-sm font-medium text-charcoal mb-2">
-            Contact Details *
+            Email Address *
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-              {getContactIcon()}
+              <Mail size={20} />
             </div>
             <input
-              type={formData.contactMethod === 'email' ? 'email' : 'tel'}
-              value={formData.contactDetails}
-              onChange={(e) => setFormData({ ...formData, contactDetails: e.target.value })}
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className={`w-full pl-12 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold transition-colors duration-300 ${
-                errors.contactDetails ? 'border-red-500' : 'border-gray-300'
+                errors.email ? 'border-red-500' : 'border-gray-300'
               }`}
-              placeholder={getContactPlaceholder()}
+              placeholder="your.email@company.com"
             />
           </div>
-          {errors.contactDetails && <p className="text-red-500 text-sm mt-1">{errors.contactDetails}</p>}
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        </div>
+
+        {/* Phone (Optional) */}
+        <div>
+          <label className="block text-sm font-medium text-charcoal mb-2">
+            Phone Number <span className="text-gray-400 font-normal">(Optional)</span>
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+              <Phone size={20} />
+            </div>
+            <input
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold transition-colors duration-300"
+              placeholder="+44 123 456 7890"
+            />
+          </div>
         </div>
 
         {/* Travel Type */}
@@ -239,16 +214,16 @@ const ContactForm = ({ title = "Start Your Seamless Journey" }) => {
         <motion.button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-navy text-cream py-4 rounded-lg font-semibold hover:bg-navy/90 disabled:opacity-70 transition-colors duration-300 flex items-center justify-center space-x-2"
+          className="w-full bg-gold text-navy py-4 rounded-lg font-semibold hover:bg-gold-dark disabled:opacity-70 transition-colors duration-300 flex items-center justify-center space-x-2"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
           {isSubmitting ? (
-            <div className="w-6 h-6 border-2 border-cream/30 border-t-cream rounded-full animate-spin" />
+            <div className="w-6 h-6 border-2 border-navy/30 border-t-navy rounded-full animate-spin" />
           ) : (
             <>
               <Send size={20} />
-              <span>Send Request</span>
+              <span>Request Itinerary</span>
             </>
           )}
         </motion.button>

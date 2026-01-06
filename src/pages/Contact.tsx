@@ -14,8 +14,14 @@ import {
 import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import SectionBadge from '../components/SectionBadge';
+import usePageMeta from '../hooks/usePageMeta';
 
 const Contact = () => {
+  usePageMeta({
+    title: 'Contact Us - 24/7 Travel Concierge',
+    description: 'Contact Haske Global Travel for luxury corporate travel. 24/7 concierge support, instant WhatsApp response. London: +44 208 191 1882.'
+  });
+
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const faqs = [
@@ -77,9 +83,9 @@ const Contact = () => {
         </div>
 
         <div className="relative z-20 max-w-4xl mx-auto px-4 md:px-8 w-full">
-          {/* Glassmorphism Card */}
+          {/* Glassmorphism Card - Enhanced contrast for WCAG AA */}
           <motion.div
-            className="bg-navy/60 backdrop-blur-xl border border-white/10 p-8 md:p-12 lg:p-16 text-center shadow-2xl"
+            className="bg-navy/80 backdrop-blur-xl border border-white/10 p-8 md:p-12 lg:p-16 text-center shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -101,12 +107,13 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
+              <span className="sr-only">Contact Haske Global Travel - </span>
               Your Next Journey Begins with a <span className="text-gold italic">Conversation</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              className="text-lg text-cream/70 max-w-xl mx-auto font-sans font-light leading-relaxed mb-10"
+              className="text-lg text-cream/80 max-w-xl mx-auto font-sans font-light leading-relaxed mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}

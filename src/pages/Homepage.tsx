@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Phone, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import usePageMeta from '../hooks/usePageMeta';
 import ContactForm from '../components/ContactForm';
 import SectionBadge from '../components/SectionBadge';
 import StatCard from '../components/StatCard';
@@ -9,8 +10,14 @@ import ProcessStep from '../components/ProcessStep';
 import TestimonialCard from '../components/TestimonialCard';
 import CTABanner from '../components/CTABanner';
 import TrustLogos from '../components/TrustLogos';
+import CallbackRequest from '../components/CallbackRequest';
 
 const Homepage = () => {
+  usePageMeta({
+    title: 'Luxury Corporate Travel Management',
+    description: 'Haske Global Travel - Premium corporate travel management for executives. 24/7 concierge, private jets, bespoke itineraries. Experience travel beyond first class.'
+  });
+
   const { scrollYProgress } = useScroll();
   const heroRef = useRef(null);
 
@@ -23,19 +30,22 @@ const Homepage = () => {
       quote: "Haske Global doesn't just manage travel—they curate experiences that enhance my global influence.",
       author: "Alexandra Chen",
       role: "CEO",
-      company: "TechForward Ventures"
+      company: "TechForward Ventures",
+      image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       quote: "The sophistication and attention to detail is unmatched. They understand that my time is measured in millions.",
       author: "Marcus Rodriguez",
       role: "Managing Partner",
-      company: "Global Capital"
+      company: "Global Capital",
+      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       quote: "Finally, a travel partner who anticipates my needs before I even articulate them.",
       author: "Sarah Williams",
       role: "Founder",
-      company: "Meridian Holdings"
+      company: "Meridian Holdings",
+      image: "https://images.pexels.com/photos/3776932/pexels-photo-3776932.jpeg?auto=compress&cs=tinysrgb&w=150"
     }
   ];
 
@@ -87,11 +97,12 @@ const Homepage = () => {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
+            poster="https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            className="absolute inset-0 w-full h-full object-cover opacity-80"
           >
             <source src="/haske-hero.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/50 to-navy/30" />
         </motion.div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-32 w-full">
@@ -105,17 +116,18 @@ const Homepage = () => {
             >
               <div className="w-12 h-px bg-gold" />
               <span className="text-gold text-xs tracking-[0.3em] uppercase font-sans">
-                The Pinnacle of Mobility
+                Luxury Corporate Travel Management
               </span>
             </motion.div>
 
-            {/* Headline - Mixed styling */}
+            {/* Headline - Mixed styling with SEO prefix */}
             <motion.h1
               className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif leading-[1.05] mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
+              <span className="sr-only">Luxury Corporate Travel Management - </span>
               <span className="text-cream">Beyond</span>
               <br />
               <span className="text-gold italic">First Class</span>
@@ -140,28 +152,26 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              {/* Primary CTA - Bordered button with icon */}
+              {/* Primary CTA - Solid gold button */}
               <motion.button
-                className="group flex items-center gap-3 px-6 py-4 border border-cream/30 text-cream font-sans text-sm tracking-wider hover:border-gold hover:text-gold transition-all duration-300"
+                className="group flex items-center gap-3 px-8 py-4 bg-gold text-navy font-sans font-semibold text-sm tracking-wider uppercase hover:bg-cream transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Calendar className="w-5 h-5" />
-                <span>Plan a Journey</span>
+                <span>Plan Your Journey</span>
               </motion.button>
 
-              {/* Secondary CTA - Text link with underline */}
+              {/* Secondary CTA - Bordered button */}
               <a
                 href="https://wa.me/+447340801274"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-cream/70 hover:text-gold transition-colors duration-300 px-2 py-4"
+                className="group flex items-center justify-center gap-3 px-8 py-4 border border-cream/30 text-cream font-sans text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
               >
-                <span className="font-sans text-sm tracking-wider border-b border-cream/30 group-hover:border-gold pb-0.5">
-                  Contact Concierge
-                </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Phone className="w-5 h-5" />
+                <span>Contact Concierge</span>
               </a>
             </motion.div>
           </div>
@@ -215,10 +225,10 @@ const Homepage = () => {
       <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <StatCard value="500" suffix="+" label="Elite Clients" delay={0} />
-            <StatCard value="50" suffix="+" label="Countries" delay={0.1} />
-            <StatCard value="99" suffix="%" label="Success Rate" delay={0.2} />
-            <StatCard value="24" suffix="/7" label="Support" delay={0.3} />
+            <StatCard value="500" suffix="+" label="Elite Clients" subtitle="Including Fortune 500 leaders" delay={0} />
+            <StatCard value="50" suffix="+" label="Countries" subtitle="Seamless global coverage" delay={0.1} />
+            <StatCard value="99" suffix="%" label="Success Rate" subtitle="On-time delivery guaranteed" delay={0.2} />
+            <StatCard value="24" suffix="/7" label="Support" subtitle="Dedicated concierge team" delay={0.3} />
           </div>
         </div>
       </section>
@@ -329,6 +339,7 @@ const Homepage = () => {
                 author={testimonial.author}
                 role={testimonial.role}
                 company={testimonial.company}
+                image={testimonial.image}
                 delay={idx * 0.15}
               />
             ))}
@@ -374,6 +385,24 @@ const Homepage = () => {
         logos={trustLogos}
         variant="dark"
       />
+
+      {/* Quick Callback Strip */}
+      <section className="py-12 bg-navy border-y border-white/5">
+        <div className="max-w-xl mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <p className="text-cream/80 font-sans text-sm mb-4">
+              Need immediate assistance? Leave your number and we'll call you back.
+            </p>
+            <CallbackRequest variant="dark" title="" />
+          </motion.div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact-form" className="py-20 md:py-32 bg-cream relative">

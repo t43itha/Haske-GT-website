@@ -11,7 +11,7 @@ const WhatsAppFloat = () => {
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
     >
       <motion.a
-        href="https://wa.me/+233535703324?text=Hello, I'm interested in your luxury travel services"
+        href="https://wa.me/+447340801274?text=Hello, I'm interested in your luxury travel services"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center space-x-2 bg-gold text-navy px-4 py-3 rounded-full shadow-lg hover:bg-gold/90 transition-colors duration-300"

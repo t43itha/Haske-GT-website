@@ -17,6 +17,7 @@ import ContactForm from '../components/ContactForm';
 import SectionBadge from '../components/SectionBadge';
 import ProcessStep from '../components/ProcessStep';
 import CTABanner from '../components/CTABanner';
+import usePageMeta from '../hooks/usePageMeta';
 
 // Featured Service Card Component
 const FeaturedServiceCard = ({
@@ -66,6 +67,11 @@ const FeaturedServiceCard = ({
 );
 
 const Services = () => {
+  usePageMeta({
+    title: 'Executive Travel Services',
+    description: 'Private jets, corporate travel, event coordination, and bespoke leisure experiences. Premium travel services for discerning executives worldwide.'
+  });
+
   const allServices = [
     {
       icon: Plane,
@@ -170,6 +176,7 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
+            <span className="sr-only">Luxury Corporate Travel Services - </span>
             Curated Corporate <span className="text-gold italic">Excellence</span>
           </motion.h1>
 
