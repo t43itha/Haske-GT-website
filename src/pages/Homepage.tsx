@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Phone, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield, Calendar } from 'lucide-react';
+import { ArrowRight, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import usePageMeta from '../hooks/usePageMeta';
 import ContactForm from '../components/ContactForm';
@@ -145,33 +145,33 @@ const Homepage = () => {
               Curating seamless journeys for the global elite. We harmonize precision corporate logistics with the art of luxury leisure.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTA - Refined luxury aesthetic */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              {/* Primary CTA - Solid gold button */}
+              {/* Primary CTA - Elegant outlined style */}
               <motion.button
-                className="group flex items-center gap-3 px-8 py-4 bg-gold text-navy font-sans font-semibold text-sm tracking-wider uppercase hover:bg-cream transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="group flex items-center gap-3 px-10 py-4 border border-gold/80 text-gold font-sans font-light text-xs tracking-[0.25em] uppercase hover:bg-gold/10 hover:border-gold transition-all duration-500"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Calendar className="w-5 h-5" />
-                <span>Plan Your Journey</span>
+                <span>Begin Your Journey</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.button>
 
-              {/* Secondary CTA - Hidden on mobile to reduce CTA clutter */}
+              {/* Secondary CTA - Hidden on mobile */}
               <a
                 href="https://wa.me/+447340801274"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:flex group items-center justify-center gap-3 px-8 py-4 border border-cream/30 text-cream font-sans text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-all duration-300"
+                className="hidden sm:flex group items-center justify-center gap-3 px-8 py-4 text-cream/60 font-sans font-light text-xs tracking-[0.2em] uppercase hover:text-gold transition-all duration-500"
               >
-                <Phone className="w-5 h-5" />
-                <span>Contact Concierge</span>
+                <span>Speak with Concierge</span>
+                <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
               </a>
             </motion.div>
           </div>
