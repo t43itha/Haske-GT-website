@@ -178,7 +178,7 @@ const Homepage = () => {
         </div>
 
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold/50"
+          className="absolute bottom-24 lg:bottom-10 left-1/2 -translate-x-1/2 text-gold/50"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
