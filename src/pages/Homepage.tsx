@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -20,6 +20,16 @@ const Homepage = () => {
 
   const { scrollYProgress } = useScroll();
   const heroRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Force video autoplay on mount (helps with mobile browsers)
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay was prevented, video will show poster image
+      });
+    }
+  }, []);
 
   // Parallax effect for hero
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
@@ -93,11 +103,13 @@ const Homepage = () => {
           style={{ y, opacity }}
         >
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            poster="https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            preload="auto"
+            poster="/hero-poster.png"
             className="absolute inset-0 w-full h-full object-cover opacity-80"
           >
             <source src="/haske-hero2.mp4" type="video/mp4" />
