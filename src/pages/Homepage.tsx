@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -21,14 +21,17 @@ const Homepage = () => {
   const { scrollYProgress } = useScroll();
   const heroRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true); // Assume autoplay works, fallback if it doesn't
 
   // Force video autoplay on mount (helps with mobile browsers)
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay was prevented, video will show poster image
-      });
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.play().catch(() => {
+      // Autoplay was prevented, show fallback image
+      setIsVideoPlaying(false);
+    });
   }, []);
 
   // Parallax effect for hero
@@ -102,6 +105,13 @@ const Homepage = () => {
           className="absolute inset-0 z-0"
           style={{ y, opacity }}
         >
+          {/* Fallback image - shows when video doesn't autoplay */}
+          <img
+            src="/hero-poster.png"
+            alt=""
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-80'}`}
+          />
+          {/* Video - always rendered but invisible until playing */}
           <video
             ref={videoRef}
             autoPlay
@@ -109,8 +119,7 @@ const Homepage = () => {
             muted
             playsInline
             preload="auto"
-            poster="/hero-poster.png"
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoPlaying ? 'opacity-80' : 'opacity-0'}`}
           >
             <source src="/haske-hero2.mp4" type="video/mp4" />
           </video>
