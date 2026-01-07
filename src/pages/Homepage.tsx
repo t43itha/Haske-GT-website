@@ -100,7 +100,7 @@ const Homepage = () => {
             poster="https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg?auto=compress&cs=tinysrgb&w=1920"
             className="absolute inset-0 w-full h-full object-cover opacity-80"
           >
-            <source src="/haske-hero.mp4" type="video/mp4" />
+            <source src="/haske-hero2.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/50 to-navy/30" />
         </motion.div>
@@ -142,7 +142,7 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Curating seamless journeys for the global elite. We harmonize precision corporate logistics with the art of luxury leisure.
+              Your time is too valuable for travel logistics. We handle the complexity so you arrive ready to lead.
             </motion.p>
 
             {/* CTA - Refined luxury aesthetic */}

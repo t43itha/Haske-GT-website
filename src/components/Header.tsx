@@ -100,7 +100,7 @@ const Header = () => {
               {/* Desktop CTA */}
               <Link
                 to="/contact"
-                className="hidden lg:flex items-center gap-2 px-4 py-2 border border-cream/20 text-cream/80 text-xs font-sans tracking-[0.15em] uppercase hover:border-gold/50 hover:text-gold transition-all duration-300"
+                className="hidden lg:flex items-center gap-2 px-5 py-2.5 bg-gold text-navy text-xs font-sans font-medium tracking-[0.15em] uppercase hover:bg-gold/90 transition-all duration-300"
               >
                 Inquire Now
               </Link>
