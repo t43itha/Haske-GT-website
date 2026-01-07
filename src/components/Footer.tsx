@@ -25,7 +25,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
               <img
-                src="/HaskeHorizontalgold.png"
+                src="/HaskeHorizontalGold_New.png"
                 alt="Haske Global Travel"
                 className="h-16 w-auto object-contain"
               />
