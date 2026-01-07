@@ -102,7 +102,7 @@ const Header = () => {
                 to="/contact"
                 className="hidden lg:flex items-center gap-2 px-5 py-2.5 bg-gold text-navy text-xs font-sans font-medium tracking-[0.15em] uppercase hover:bg-gold/90 transition-all duration-300"
               >
-                Inquire Now
+                Book a Consultation
               </Link>
 
               {/* Mobile Menu Button */}
