@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield } from 'lucide-react';
+import { ArrowRight, Crown, Zap, Globe, ChevronDown, Lightbulb, Shield, PlaneTakeoff } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import usePageMeta from '../hooks/usePageMeta';
 import ContactForm from '../components/ContactForm';
@@ -21,16 +21,16 @@ const Homepage = () => {
   const { scrollYProgress } = useScroll();
   const heroRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true); // Assume autoplay works, fallback if it doesn't
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Show image first, switch when video plays
 
   // Force video autoplay on mount (helps with mobile browsers)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Explicitly call play() for browsers that block autoPlay attribute
     video.play().catch(() => {
-      // Autoplay was prevented, show fallback image
-      setIsVideoPlaying(false);
+      // Autoplay was prevented, fallback image stays visible
     });
   }, []);
 
@@ -109,9 +109,9 @@ const Homepage = () => {
           <img
             src="/hero-poster.png"
             alt=""
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-80'}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-80'}`}
           />
-          {/* Video - always rendered but invisible until playing */}
+          {/* Video - fades in only when actually playing */}
           <video
             ref={videoRef}
             autoPlay
@@ -119,7 +119,8 @@ const Homepage = () => {
             muted
             playsInline
             preload="auto"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoPlaying ? 'opacity-80' : 'opacity-0'}`}
+            onPlaying={() => setIsVideoPlaying(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${isVideoPlaying ? 'opacity-80' : 'opacity-0 pointer-events-none'}`}
           >
             <source src="/haske-hero2.mp4" type="video/mp4" />
           </video>
@@ -198,6 +199,25 @@ const Homepage = () => {
           </div>
         </div>
 
+        {/* IATA Badge - Bottom right */}
+        <motion.div
+          className="absolute bottom-24 lg:bottom-10 right-6 z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.5 }}
+        >
+          <div className="flex flex-col items-end opacity-80 mix-blend-overlay">
+            <div className="flex items-end gap-2">
+              <PlaneTakeoff className="w-7 h-7 text-white mb-0.5" strokeWidth={1.5} />
+              <div className="flex flex-col leading-none text-white font-bold">
+                <span>IATA</span>
+                <span className="text-[0.5rem] font-light tracking-wider uppercase">Accredited Agent</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-24 lg:bottom-10 left-1/2 -translate-x-1/2 text-gold/50"
           animate={{ y: [0, 10, 0] }}

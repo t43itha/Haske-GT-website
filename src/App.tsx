@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import IATACredentials from './components/IATACredentials';
 import ScrollToTop from './components/ScrollToTop';
 import MobileCTA from './components/MobileCTA';
 import Homepage from './pages/Homepage';
@@ -26,7 +25,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <IATACredentials />
         <ScrollToTop />
         <MobileCTA />
       </div>
