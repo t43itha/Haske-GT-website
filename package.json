@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "itinerary:haske": "python3 tools/haske-itinerary/generate_haske_itinerary.py"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
