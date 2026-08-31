@@ -55,7 +55,7 @@ const Header = () => {
             <Link to="/" onClick={handleNavClick} className="flex items-center z-50">
               <motion.div
                 className={`overflow-hidden transition-all duration-500 ${
-                  isScrolled ? 'h-8 md:h-10' : 'h-10 md:h-12 lg:h-14'
+                  isScrolled ? 'h-10 md:h-12' : 'h-12 md:h-14 lg:h-16'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -64,7 +64,7 @@ const Header = () => {
                   src="/HaskeHorizontalGold_New.png"
                   alt="Haske Global Travel"
                   className={`w-auto object-cover object-center transition-all duration-500 ${
-                    isScrolled ? 'h-16 md:h-20 -mt-4 md:-mt-5' : 'h-20 md:h-24 lg:h-28 -mt-5 md:-mt-6 lg:-mt-7'
+                    isScrolled ? 'h-24 md:h-28 -mt-6 md:-mt-7' : 'h-28 md:h-32 lg:h-36 -mt-7 md:-mt-8 lg:-mt-9'
                   }`}
                 />
               </motion.div>
@@ -197,7 +197,7 @@ const Header = () => {
                       <MessageCircle size={20} />
                     </a>
                     <a
-                      href="tel:+442081911882"
+                      href="tel:+971555734881"
                       className="w-12 h-12 flex items-center justify-center border border-white/20 text-cream hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300"
                       aria-label="Phone"
                     >

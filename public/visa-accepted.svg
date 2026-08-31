@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 56" role="img" aria-labelledby="title">
+  <title id="title">Visa accepted</title>
+  <rect width="96" height="56" rx="6" fill="#fff"/>
+  <rect x=".5" y=".5" width="95" height="55" rx="5.5" fill="none" stroke="#d9d9d9"/>
+  <text x="48" y="36" text-anchor="middle" fill="#1434CB" font-family="Arial, sans-serif" font-size="25" font-weight="700" font-style="italic">VISA</text>
+</svg>

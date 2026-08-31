@@ -9,6 +9,9 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Destinations from './pages/Destinations';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import RefundCancellationPolicy from './pages/RefundCancellationPolicy';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-cancellation-policy" element={<RefundCancellationPolicy />} />
           </Routes>
         </main>
         <Footer />

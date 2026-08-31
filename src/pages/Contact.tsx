@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Plane
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import SectionBadge from '../components/SectionBadge';
 import usePageMeta from '../hooks/usePageMeta';
@@ -19,7 +18,7 @@ import usePageMeta from '../hooks/usePageMeta';
 const Contact = () => {
   usePageMeta({
     title: 'Contact Us - 24/7 Travel Concierge',
-    description: 'Contact Haske Global Travel for luxury corporate travel. 24/7 concierge support, instant WhatsApp response. London: +44 208 191 1882.'
+    description: 'Contact Haske Global Travel & Tourism L.L.C S.O.C in Dubai for travel, tour, transfer and concierge services.'
   });
 
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -35,7 +34,7 @@ const Contact = () => {
     },
     {
       question: "What's your fee structure?",
-      answer: "We offer transparent monthly retainers starting at $495/month for individual executives. Enterprise packages for teams begin at $2,500/month. No hidden fees, no transaction charges."
+      answer: "Our services use clear starting prices or an individual quotation. Your written quotation confirms the total price, applicable taxes, payment schedule and supplier terms before payment."
     },
     {
       question: "Can you handle visa/documentation?",
@@ -53,9 +52,9 @@ const Contact = () => {
     },
     {
       icon: Phone,
-      title: 'UK Direct Line',
-      subtitle: '+44 208 191 1882',
-      href: 'tel:+442081911882',
+      title: 'Dubai Direct Line',
+      subtitle: '+971 55 573 4881',
+      href: 'tel:+971555734881',
       external: false
     },
     {
@@ -141,11 +140,11 @@ const Contact = () => {
 
               {/* Phone CTA */}
               <a
-                href="tel:+442081911882"
+                href="tel:+971555734881"
                 className="group w-full sm:w-auto flex-1 h-14 flex items-center justify-center gap-3 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-gold/50 text-cream font-sans font-semibold tracking-wider uppercase transition-all duration-300 backdrop-blur-sm"
               >
                 <Phone className="w-5 h-5 text-gold" />
-                <span>+44 208 191 1882</span>
+                <span>+971 55 573 4881</span>
               </a>
             </motion.div>
 
@@ -202,29 +201,30 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              {/* London Office Location */}
+              {/* Dubai Registered Office */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <SectionBadge variant="light">Headquarters</SectionBadge>
-                <h3 className="text-2xl font-serif text-navy mt-6 mb-6">London Office</h3>
+                <SectionBadge variant="light">Registered Office</SectionBadge>
+                <h3 className="text-2xl font-serif text-navy mt-6 mb-6">Dubai Office</h3>
                 <div className="bg-navy p-8 text-cream">
                   <div className="space-y-6">
+                    <p className="font-serif text-lg text-gold">Haske Global Travel & Tourism L.L.C S.O.C</p>
                     <div className="flex items-start gap-4">
                       <MapPin className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
                       <div className="font-sans font-light leading-relaxed">
-                        Suite 130, Lewisham Tower House,<br />
-                        67-71 Lewisham High Street,<br />
-                        London, SE13 5JX
+                        Office M07, Al Mulla-7 Building,<br />
+                        Naif, Dubai, UAE
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <Clock className="w-5 h-5 text-gold flex-shrink-0" />
-                      <span className="font-sans font-light">Mon-Fri: 7:00 AM - 9:00 PM GMT</span>
+                      <Phone className="w-5 h-5 text-gold flex-shrink-0" />
+                      <a href="tel:+971555734881" className="font-sans font-light hover:text-gold">+971 55 573 4881</a>
                     </div>
+                    <p className="text-sm text-cream/60 font-sans">DET Licence No. 1485567 · TRN 105361952200003</p>
                   </div>
                 </div>
               </motion.div>
@@ -327,13 +327,13 @@ const Contact = () => {
             <p className="text-charcoal/60 font-sans mb-10 max-w-xl mx-auto">
               Book directly with our team for an immediate consultation.
             </p>
-            <Link
-              to="/contact"
+            <a
+              href="tel:+971555734881"
               className="inline-flex items-center gap-3 bg-gold text-navy px-8 py-4 font-sans font-semibold tracking-wider uppercase hover:bg-navy hover:text-cream transition-colors duration-300"
             >
               <Calendar className="w-5 h-5" />
               <span>Schedule a Call</span>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
