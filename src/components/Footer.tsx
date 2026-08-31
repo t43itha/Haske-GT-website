@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Shield, Globe, MessageCircle, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from 'lucide-react';
 
 const Footer = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Destinations', path: '/destinations' },
     { name: 'Services', path: '/services' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' }
@@ -11,9 +12,9 @@ const Footer = () => {
 
   const services = [
     'Corporate Travel',
-    'Event Coordination',
-    'Bespoke Leisure',
-    'Wellness Retreats'
+    'Airport Transfers',
+    'Chauffeur Service',
+    'Private Tours'
   ];
 
   return (
@@ -43,7 +44,7 @@ const Footer = () => {
                 <MessageCircle size={18} />
               </a>
               <a
-                href="tel:+442081911882"
+                href="tel:+971555734881"
                 className="w-10 h-10 flex items-center justify-center border border-white/10 text-cream/60 hover:bg-gold hover:border-gold hover:text-navy transition-all duration-300"
               >
                 <Phone size={18} />
@@ -100,15 +101,15 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
                 <p className="text-cream/60 text-sm font-sans font-light leading-relaxed">
-                  Suite 130, Lewisham Tower House,<br />
-                  67-71 Lewisham High Street,<br />
-                  London, SE13 5JX
+                  Haske Global Travel & Tourism L.L.C S.O.C<br />
+                  Office M07, Al Mulla-7 Building,<br />
+                  Naif, Dubai, UAE
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                <a href="tel:+442081911882" className="text-cream/60 hover:text-gold text-sm font-sans font-light transition-colors duration-300">
-                  +44 208 191 1882
+                <a href="tel:+971555734881" className="text-cream/60 hover:text-gold text-sm font-sans font-light transition-colors duration-300">
+                  +971 55 573 4881
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -139,20 +140,13 @@ const Footer = () => {
                   <div>Travel Agency</div>
                 </div>
               </div>
-              <div className="hidden md:flex items-center gap-2 text-xs text-cream/40 font-sans">
-                <Shield size={14} className="text-gold/60" />
-                <span>ISO 27001 Compliant</span>
-              </div>
-              <div className="hidden md:flex items-center gap-2 text-xs text-cream/40 font-sans">
-                <Globe size={14} className="text-gold/60" />
-                <span>Global Reach</span>
-              </div>
             </div>
 
-            {/* 24/7 Support Badge */}
-            <div className="flex items-center gap-4 px-6 py-3 bg-white/5 border border-white/10">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-sans text-cream/60 tracking-wider uppercase">24/7 Support Available</span>
+            {/* Accepted Cards */}
+            <div className="flex items-center gap-3" aria-label="Accepted payment cards">
+              <span className="text-xs font-sans text-cream/40 uppercase tracking-wider mr-1">We accept</span>
+              <img src="/visa-accepted.svg" alt="Visa accepted" className="h-9 w-auto" />
+              <img src="/mastercard-accepted.svg" alt="Mastercard accepted" className="h-9 w-auto" />
             </div>
           </div>
         </div>
@@ -161,13 +155,16 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-xs text-cream/40 font-sans">
-              &copy; {new Date().getFullYear()} Eugene Chauffeurs Ltd T/A Haske Global Travel. All rights reserved.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+            <div className="text-xs text-cream/40 font-sans text-center md:text-left">
+              <div>&copy; {new Date().getFullYear()} Haske Global Travel & Tourism L.L.C S.O.C. All rights reserved.</div>
+              <div className="mt-1">DET Licence No. 1485567 · TRN 105361952200003</div>
             </div>
-            <div className="flex gap-6 text-xs text-cream/40 font-sans">
-              <a href="#" className="hover:text-gold transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="hover:text-gold transition-colors duration-300">Terms of Service</a>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-cream/40 font-sans">
+              <Link to="/terms-and-conditions" className="hover:text-gold transition-colors duration-300">Terms & Conditions</Link>
+              <Link to="/privacy-policy" className="hover:text-gold transition-colors duration-300">Privacy Policy</Link>
+              <Link to="/refund-cancellation-policy" className="hover:text-gold transition-colors duration-300">Refund & Cancellation</Link>
+              <Link to="/contact" className="hover:text-gold transition-colors duration-300">Contact</Link>
             </div>
           </div>
         </div>

@@ -14,8 +14,8 @@ import usePageMeta from '../hooks/usePageMeta';
 
 const About = () => {
   usePageMeta({
-    title: 'About Us - Executive Travel Consultancy',
-    description: 'Discover Haske Global Travel - 15+ years curating luxury corporate travel for Fortune 500 executives. London, Dubai, and Accra offices serving clients worldwide.'
+    title: 'About Our Dubai Travel Company',
+    description: 'Haske Global Travel & Tourism L.L.C S.O.C is a Dubai-licensed, IATA-accredited tour operator serving international clients.'
   });
 
   const stats = [
@@ -44,31 +44,22 @@ const About = () => {
 
   const offices = [
     {
+      city: 'Dubai',
+      region: 'Middle East & Asia',
+      description: 'Registered Office',
+      flag: '🇦🇪',
+      phone: '+971 55 573 4881',
+      address: 'Office M07, Al Mulla-7 Building, Naif, Dubai, UAE',
+      hours: '24/7 Concierge Available'
+    },
+    {
       city: 'London',
       region: 'Europe & UK',
-      description: 'Global Headquarters',
+      description: 'UK Office',
       flag: '🇬🇧',
       phone: '+44 208 191 1882',
       address: 'Suite 130, Lewisham Tower House, 67-71 Lewisham High Street, SE13 5JX',
       hours: 'Mon-Fri: 7AM - 9PM GMT'
-    },
-    {
-      city: 'Dubai',
-      region: 'Middle East & Asia',
-      description: 'Regional Hub',
-      flag: '🇦🇪',
-      phone: '+971 4 123 4567',
-      address: 'Business Bay, Dubai, UAE',
-      hours: '24/7 Concierge Available'
-    },
-    {
-      city: 'Accra',
-      region: 'West Africa',
-      description: 'Local Expertise',
-      flag: '🇬🇭',
-      phone: '+233 30 123 4567',
-      address: 'Airport City, Accra, Ghana',
-      hours: 'Mon-Sat: 8AM - 8PM GMT'
     }
   ];
 
@@ -98,7 +89,10 @@ const About = () => {
                   <span className="text-gold italic">in Motion</span>
                 </h1>
                 <p className="text-cream/70 text-lg font-sans font-light leading-relaxed max-w-xl">
-                  Haske Global Travel is dedicated to curating seamless, luxury journeys for the world's most discerning executives. Experience corporate mobility reimagined.
+                  Haske Global Travel & Tourism L.L.C S.O.C is a Dubai-licensed tour operator serving international clients with tailored travel and concierge services.
+                </p>
+                <p className="text-gold text-sm font-sans tracking-wider uppercase">
+                  DET Licence No. 1485567 · IATA Accredited
                 </p>
               </div>
 
@@ -214,7 +208,7 @@ const About = () => {
                 </h2>
                 <div className="h-1 w-20 bg-gold mb-6" />
                 <p className="text-cream/80 text-lg font-sans font-light leading-relaxed mb-6">
-                  At Haske, we believe that the journey is as significant as the destination. Founded on the principles of trust, exclusivity, and impeccable service, we have established ourselves as the silent architects behind the world's most important business movements.
+                  Based in Dubai, we arrange corporate travel, private journeys, tours, transfers and concierge support for clients travelling in the UAE and worldwide.
                 </p>
                 <p className="text-cream/60 text-base font-sans font-light leading-relaxed">
                   Our team of dedicated specialists works tirelessly to ensure that every mile traveled is a testament to comfort and efficiency. From private aviation charter to secured ground transport, we handle the logistics so you can focus on the business at hand.
@@ -294,7 +288,7 @@ const About = () => {
           </div>
 
           {/* Office Locations */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {offices.map((office, index) => (
               <motion.div
                 key={index}

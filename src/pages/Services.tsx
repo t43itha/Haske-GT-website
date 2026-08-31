@@ -11,8 +11,12 @@ import {
   TrendingUp,
   Plane,
   Map,
-  Headphones
+  Headphones,
+  Car,
+  PlaneLanding,
+  Compass
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import SectionBadge from '../components/SectionBadge';
 import ProcessStep from '../components/ProcessStep';
@@ -25,6 +29,7 @@ const FeaturedServiceCard = ({
   icon: Icon,
   title,
   description,
+  price,
   cta,
   index
 }: {
@@ -32,11 +37,12 @@ const FeaturedServiceCard = ({
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
+  price: string;
   cta: string;
   index: number;
 }) => (
   <motion.div
-    className="group relative h-[450px] md:h-[500px] overflow-hidden cursor-pointer"
+    className="group relative h-[450px] md:h-[500px] overflow-hidden"
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.15 }}
@@ -58,10 +64,11 @@ const FeaturedServiceCard = ({
       <p className="text-cream/70 text-sm md:text-base font-sans font-light leading-relaxed line-clamp-3 group-hover:text-cream transition-colors">
         {description}
       </p>
-      <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
+      <p className="text-gold text-sm font-sans font-semibold tracking-wide">{price}</p>
+      <Link to="/contact" className="pt-2 flex items-center gap-2">
         <span className="text-gold font-sans font-semibold text-sm uppercase tracking-wider">{cta}</span>
         <ArrowRight className="w-4 h-4 text-gold" />
-      </div>
+      </Link>
     </div>
   </motion.div>
 );
@@ -77,6 +84,7 @@ const Services = () => {
       icon: Plane,
       title: 'Private Jet Charters',
       description: 'Bypass the terminals. Access a global fleet of mid-to-heavy jets tailored for executive efficiency and privacy.',
+      price: 'Rates Upon Request',
       image: 'https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'View Fleet'
     },
@@ -84,6 +92,7 @@ const Services = () => {
       icon: Map,
       title: 'Bespoke Itineraries',
       description: 'From door-to-door transfers to exclusive hotel partnerships, every second of your journey is meticulously planned.',
+      price: 'Planning fees from AED 3,000',
       image: 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Explore Options'
     },
@@ -91,6 +100,7 @@ const Services = () => {
       icon: Headphones,
       title: '24/7 Global Concierge',
       description: 'Unparalleled access to lifestyle management and support, ensuring your business trip feels like a seamless luxury experience.',
+      price: 'From AED 1,850 per week',
       image: 'https://images.pexels.com/photos/6474475/pexels-photo-6474475.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Contact Team'
     },
@@ -98,6 +108,7 @@ const Services = () => {
       icon: Briefcase,
       title: 'Corporate Travel',
       description: 'Seamless business travel orchestration for leaders who demand excellence. Every detail handled with military precision.',
+      price: 'Custom pricing — Request a Corporate Proposal',
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Learn More'
     },
@@ -105,6 +116,7 @@ const Services = () => {
       icon: Users,
       title: 'Event Coordination',
       description: 'Board meetings to product launches—handled with precision that rivals the finest event planners.',
+      price: 'Tailored Pricing by Consultation',
       image: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Plan Event'
     },
@@ -112,6 +124,7 @@ const Services = () => {
       icon: Palmtree,
       title: 'Bespoke Leisure',
       description: 'Exclusive experiences crafted for discerning travelers who seek the extraordinary.',
+      price: 'Rates Upon Request',
       image: 'https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Discover More'
     },
@@ -119,8 +132,33 @@ const Services = () => {
       icon: Heart,
       title: 'Wellness Retreats',
       description: 'Curated wellness experiences designed for peak performance leaders seeking rejuvenation.',
+      price: 'Rates Upon Request',
       image: 'https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=800',
       cta: 'Find Retreats'
+    },
+    {
+      icon: PlaneLanding,
+      title: 'Airport Transfers',
+      description: 'Private one-way transfers between Dubai airports, hotels and business districts.',
+      price: 'From AED 400 one way',
+      image: 'https://images.pexels.com/photos/3769312/pexels-photo-3769312.jpeg?auto=compress&cs=tinysrgb&w=800',
+      cta: 'Request Transfer'
+    },
+    {
+      icon: Car,
+      title: 'Chauffeur Service',
+      description: 'Professional chauffeur and executive vehicle at your disposal in Dubai.',
+      price: 'From AED 800 / 5 hours',
+      image: 'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      cta: 'Book Chauffeur'
+    },
+    {
+      icon: Compass,
+      title: 'Private Tours',
+      description: 'Tailored Dubai tours with private transport and local expertise.',
+      price: 'From AED 1,250 per group',
+      image: 'https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=800',
+      cta: 'Plan a Tour'
     }
   ];
 
@@ -194,35 +232,24 @@ const Services = () => {
       {/* All Services - Image Cards Grid */}
       <section className="py-20 md:py-28 bg-navy">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          {/* First Row - 3 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
-            {allServices.slice(0, 3).map((service, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {allServices.map((service, index) => (
               <FeaturedServiceCard
                 key={service.title}
                 image={service.image}
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
+                price={service.price}
                 cta={service.cta}
                 index={index}
               />
             ))}
           </div>
 
-          {/* Second Row - 4 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {allServices.slice(3).map((service, index) => (
-              <FeaturedServiceCard
-                key={service.title}
-                image={service.image}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                cta={service.cta}
-                index={index + 3}
-              />
-            ))}
-          </div>
+          <p className="mt-10 max-w-4xl mx-auto text-center text-sm text-cream/55 font-sans leading-relaxed">
+            Prices are indicative starting prices in AED and depend on dates, availability, passenger numbers, route and service scope. Your written quotation will confirm the final price, applicable taxes, inclusions, payment schedule and supplier cancellation terms before payment.
+          </p>
 
           {/* Decorative Divider */}
           <div className="flex justify-center mt-16">
